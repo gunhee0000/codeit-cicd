@@ -11,6 +11,7 @@ on:
     # 해당 브랜치에 push 될 때만 workflow 실행
     branches:
       - dev
+      - "feat/**" # feat/로 시작하는 브랜치
   workflow_dispatch:
 
 jobs:
