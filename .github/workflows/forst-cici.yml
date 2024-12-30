@@ -1,10 +1,25 @@
+# workflow
+
+# name: workflow의 이름
 name: First workflow
+
+# workflow_dispatch: 수동으로 트리거
 on: workflow_dispatch
+
+#jobs: job 정의
 jobs:
+  # job.id: job의 이름, 임의의 이름 지정
   first-jobs:
-    runs-on: ubuntu-latest
+    # job이 실행 될 환경
+    # runner: 실제 job이 실행 될 os환경 리눅스, 윈도우, 맥.
+    runs-on: ubuntu-latest # 리눅스 우분투의 최신버전으로 실행
+
+    # steps: jop의 일련의 과정
     steps:
+      # 첫번째 과정
+      # - name: step의 이름
       - name: Print Greeting
+        # run: cli 명령어 (리눅스 명령어 사용)
         run: echo "Hello World!"
 
       - name: Print Goodbye
