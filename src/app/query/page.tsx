@@ -20,5 +20,3 @@ const noEmptyString = (str: string) => {
 
   return str;
 };
-
-export { noEmptyString };
