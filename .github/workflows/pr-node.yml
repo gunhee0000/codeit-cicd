@@ -1,34 +1,19 @@
 name: Node version
 on: push
 jobs:
-  test:
+  build-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12, 18]
     steps:
-      - uses: actions/checkout@v4
+      - name: Get Codes
+        uses: actions/checkout@v4
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }} # matrix로 설정한 node-version 사용
       - name: Install dependencies
         run: npm install
-      - name: run test
-        run: npm run test
-
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12, 18]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm install
-      - name: run test
-        run: npm run test
+      - name: run build
+        run: npm run build
