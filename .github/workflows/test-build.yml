@@ -11,16 +11,30 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # 코드를 가져옴
+      # 1-1 코드를 가져옴
       - name: Get Codes
         uses: actions/checkout@v4
 
-      # 의존성 파일 설치
+      # 1-2 의존성 파일 설치
       - name: Install Dependencies
         run: npm install
 
-      # 테스트 실행
+      # 1-3 테스트 실행
       - name: Run Test
         run: npm test
 
+    # run: cli(콘솔) 명령어를 작성해야 하는 경우
+    # uses: 이미 만들어진 action을 사용할 때
+
   # 2. build
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Codes
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Build
+        run: npm run build
