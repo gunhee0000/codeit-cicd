@@ -1,0 +1,17 @@
+# main 브랜치에 push 될 때
+# 테스트 -> 빌드
+
+name: Run Test and Build
+# push 이벤트에 대해서 트리거, 수동으로 트리거
+# 배열로 작성하면 여러 이벤트 트리거 사용 가능
+on: [push, workflow_dispatch]
+
+jobs:
+  # 1. test
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Codes
+        uses: actions/checkout@v4
+
+  # 2. build
