@@ -2,10 +2,12 @@ name: Node version
 on: push
 jobs:
   build-test:
-    runs-on: ubuntu-latest
+    continue-on-error: true # 에러가 발생해도 다음 job 실행
     strategy:
       matrix:
         node-version: [12, 18]
+        os-type: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os-type }} # matrix로 설정한 os-type 사용
     steps:
       - name: Get Codes
         uses: actions/checkout@v4
