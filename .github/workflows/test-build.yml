@@ -1,4 +1,4 @@
-# main 브랜치에 push 될 때
+# main branch에 push 될 때
 # 테스트 -> 빌드
 
 name: Run Test and Build
@@ -29,6 +29,7 @@ jobs:
   # 2. build
   build:
     runs-on: ubuntu-latest
+    needs: test # test job 이 성공적으로 완료되어야 build job 이 실행
     steps:
       - name: Get Codes
         uses: actions/checkout@v4
