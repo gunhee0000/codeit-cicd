@@ -4,6 +4,7 @@ on:
     branches:
       - dev
       - "feat/**"
+    # paths: 를 통해 특정 파일 변경시에만 workflow 실행 가능 -> 리소스 낭비 방지
 
 env:
   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
@@ -37,6 +38,9 @@ jobs:
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
+          # 테스트를 위한 title, body
+          # 실 사용에서는 github context를 사용,
+          # 의미있는 context body를 작성
           title: "chore: Create PR test"
           body: "this is a test pr"
           # merge 될 branch
