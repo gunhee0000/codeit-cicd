@@ -45,5 +45,3 @@ jobs:
           # github.ref: workflow가 실행된 branch
           branch: ${{ github.ref }}
           token: ${{ secrets.ACCESS_TOKEN_FOR_CI }}
-
-          # test 2
