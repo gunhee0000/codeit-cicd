@@ -1,0 +1,21 @@
+name: Node version
+on: push
+jobs:
+  build-test:
+    continue-on-error: true # 에러가 발생해도 다음 job 실행
+    strategy:
+      matrix:
+        node-version: [12, 18]
+        os-type: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os-type }} # matrix로 설정한 os-type 사용
+    steps:
+      - name: Get Codes
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }} # matrix로 설정한 node-version 사용
+      - name: Install dependencies
+        run: npm install
+      - name: run build
+        run: npm run build
